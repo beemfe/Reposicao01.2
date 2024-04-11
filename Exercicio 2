@@ -1,0 +1,121 @@
+class Professor {
+    private String nome;
+    private String matricula;
+    private int idade;
+
+    public Professor() {
+    }
+
+    public Professor(String nome, String matricula, int idade) {
+        this.nome = nome;
+        this.matricula = matricula;
+        this.idade = idade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public double calcSalario() {
+        return 0.0;
+    }
+}
+
+class ProfessorTitular extends Professor {
+    private int anosInstituicao;
+    private double salario;
+
+    public ProfessorTitular() {
+    }
+
+    public ProfessorTitular(String nome, String matricula, int idade, int anosInstituicao, double salario) {
+        super(nome, matricula, idade);
+        this.anosInstituicao = anosInstituicao;
+        this.salario = salario;
+    }
+
+    public int getAnosInstituicao() {
+        return anosInstituicao;
+    }
+
+    public void setAnosInstituicao(int anosInstituicao) {
+        this.anosInstituicao = anosInstituicao;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public double calcSalario() {
+        double aumento = (anosInstituicao / 5) * 0.05 * salario;
+        return salario + aumento;
+    }
+}
+
+class ProfessorHorista extends Professor {
+    private int horasAula;
+    private double valorHoraAula;
+
+    public ProfessorHorista() {
+    }
+
+    public ProfessorHorista(String nome, String matricula, int idade, int horasAula, double valorHoraAula) {
+        super(nome, matricula, idade);
+        this.horasAula = horasAula;
+        this.valorHoraAula = valorHoraAula;
+    }
+
+    public int getHorasAula() {
+        return horasAula;
+    }
+
+    public void setHorasAula(int horasAula) {
+        this.horasAula = horasAula;
+    }
+
+    public double getValorHoraAula() {
+        return valorHoraAula;
+    }
+
+    public void setValorHoraAula(double valorHoraAula) {
+        this.valorHoraAula = valorHoraAula;
+    }
+
+    public double calcSalario() {
+        return horasAula * valorHoraAula;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ProfessorTitular titular = new ProfessorTitular("José", "123", 35, 10, 3000.0);
+        ProfessorHorista horista = new ProfessorHorista("Maria", "456", 28, 20, 50.0);
+
+        System.out.println("Salário do Professor Titular: R$" + titular.calcSalario());
+        System.out.println("Salário do Professor Horista: R$" + horista.calcSalario());
+    }
+}
